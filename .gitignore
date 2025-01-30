@@ -18,3 +18,8 @@
 # Temp files
 *.tmp
 *~
+
+# Environment files
+.env
+.env.*
+!.env.example
