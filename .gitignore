@@ -1,0 +1,20 @@
+# PowerShell specific
+*.ps1.log
+*.psm1.log
+*.psd1.log
+
+# Windows specific
+[Tt]humbs.db
+*.lnk
+
+# VS Code specific
+.vscode/
+*.code-workspace
+
+# PowerShell module cache
+*.psd1.cache
+*.psm1.cache
+
+# Temp files
+*.tmp
+*~
