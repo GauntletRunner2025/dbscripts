@@ -4,6 +4,18 @@ $ErrorActionPreference = "Stop"
 # Get the project root (one level up from scripts directory)
 $projectRoot = Split-Path $PSScriptRoot -Parent
 
+# Load environment variables from .env.local
+$envFile = "$projectRoot/.env.local"
+if (Test-Path $envFile) {
+    Get-Content $envFile | ForEach-Object {
+        if ($_ -match '^\s*([^#][^=]+)=(.*)$') {
+            $key = $matches[1].Trim()
+            $value = $matches[2].Trim()
+            [Environment]::SetEnvironmentVariable($key, $value)
+        }
+    }
+}
+
 # Change to project root directory
 Push-Location $projectRoot
 

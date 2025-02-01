@@ -9,7 +9,7 @@ Push-Location $projectRoot
 
 try {
     Write-Host "Seeding users..." -ForegroundColor Cyan
-    node --env-file=.env.local scripts/seed-users.js
+    node --env-file=.env.local dbscripts/seed-users.js
     if ($LASTEXITCODE -ne 0) {
         throw "Failed to seed users. Check the error messages above."
     }

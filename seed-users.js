@@ -11,23 +11,18 @@ const supabase = createClient(
 
 async function seedUsers() {
     const users = [
-        { email: 'customer1@example.com', password: 'password123', role: 'customer' },
-        { email: 'customer2@example.com', password: 'password123', role: 'customer' },
-        { email: 'agent1@example.com', password: 'password123', role: 'agent' },
-        { email: 'agent2@example.com', password: 'password123', role: 'agent' },
-        { email: 'supervisor@example.com', password: 'password123', role: 'supervisor' },
-        { email: 'hr@example.com', password: 'password123', role: 'hr' }
+        { email: 'customer1@example.com', password: 'password' },
+        { email: 'customer2@example.com', password: 'password' },
+        { email: 'agent1@example.com', password: 'password' },
+        { email: 'agent2@example.com', password: 'password' },
+        { email: 'supervisor@example.com', password: 'password'},
+        { email: 'hr@example.com', password: 'password' }
     ]
 
     for (const user of users) {
         const { data: createdUser, error } = await supabase.auth.signUp({
             email: user.email,
-            password: user.password,
-            options: {
-                data: {
-                    role: user.role
-                }
-            }
+            password: user.password
         })
 
         if (error) {

@@ -14,7 +14,11 @@ Push-Location $projectRoot
 
 try {
     # Get the container ID
-    $containerId = "supabase_db_wyyjgpazdytokciipfdd"
+    if (-not $env:SUPABASE_PROJECT_ID) {
+        Write-Error "SUPABASE_PROJECT_ID environment variable is not set"
+        exit 1
+    }
+    $containerId = "supabase_db_$env:SUPABASE_PROJECT_ID"
 
     # Now run DefineSchema.sql and capture its output
     $schemaFile = Join-Path $PSScriptRoot "DefineSchema.sql"
